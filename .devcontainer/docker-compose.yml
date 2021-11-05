@@ -7,5 +7,5 @@ services:
     container_name: 'tf1_python'
     stdin_open: true
     tty: true
-    volumes:
-    - ../python:/home/user1/dev
+    volumes: 
+      - ../python:/home/user1/dev

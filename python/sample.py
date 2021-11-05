@@ -22,6 +22,7 @@ logger = getLogger(__name__)
 # -------------------------------------
 # データの準備
 # -------------------------------------
+# データをダウンロードしてinフォルダに格納
 _url = 'https:/sorage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz'
 
 data_root = tf.keras.utils.get_file(
@@ -81,8 +82,8 @@ steps_per_epoch = np.ceil(image_data.samples/image_data.batch_size)
 # 学習
 # -----------------------------------
 history = model.fit_generator(image_data, epochs=2,
-                                                    steps_per_epoch=steps_per_epoch,
-                                                    callbacks = [batch_states_callback])
+                              steps_per_epoch=steps_per_epoch,
+                              callbacks = [batch_stats_callback])
 
 logger.info('batchlosses:')
 logger.info(batch_stats_callback.batch_losses)
