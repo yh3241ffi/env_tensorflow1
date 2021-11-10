@@ -23,7 +23,7 @@ logger = getLogger(__name__)
 # データの準備
 # -------------------------------------
 # データをダウンロードしてinフォルダに格納
-_url = 'https:/sorage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz'
+_url = 'https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz'
 
 data_root = tf.keras.utils.get_file(
     'flower_photos', _url, cache_dir='./', cache_subdir='in', untar=True
@@ -103,7 +103,7 @@ plt.savefig('./out/fig_loss.png')
 
 # 正解率をグラフ化
 plt.figure()
-plt.ylabe("Accuracy")
+plt.ylabel("Accuracy")
 plt.xlabel("Training Steps")
 plt.ylim([0,1])
 plt.plot(batch_stats_callback.batch_acc)
@@ -126,12 +126,13 @@ label_id = np.argmax(label_batch, axis=-1)
 plt.figure(figsize=(10,9))
 plt.subplots_adjust(hspace=0.5)
 for n in range(30):
-    plt.subplot(6,5,n+1)
-    plt.imshow(image_batch[n])
-    color = "green" if predicted_id[n] == label_id[n] else "red"
-    plt.title(predicted_label_batch[n].title(), color=color)
-    plt.axis('off') = plt.suptitle("Model predictons (green: correct, red: incorrect)")
-    plt.savefig('./out/predict.png')
+  plt.subplot(6,5,n+1)
+  plt.imshow(image_batch[n])
+  color = "green" if predicted_id[n] == label_id[n] else "red"
+  plt.title(predicted_label_batch[n].title(), color=color)
+  plt.axis('off')
+_ = plt.suptitle("Model predictions (green: correct, red: incorrect)")
+plt.savefig('./out/predict.png')
 
 # ------------------------------------
 # モデルのエクスポート

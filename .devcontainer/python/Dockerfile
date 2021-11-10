@@ -1,7 +1,7 @@
 FROM python:3.8-slim
 
 # パッケージのインストール
-RUN apt-get update && apt-get insall -y \
+RUN apt-get update && apt-get install -y \
     tzdata \
  && rm -rf /var/lib/apt/lists/*
 
